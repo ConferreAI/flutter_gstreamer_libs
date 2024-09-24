@@ -12,9 +12,18 @@ Provide GStreamer.framework native library (no bindings provided).
   s.homepage         = 'https://github.com/ConferreAI'
   s.license          = { :file => '../LICENSE' }
   s.author           = { 'Hao Su' => 'hao@conferre.ai' }
-  
+
   s.source           = { :path => "." }
+  s.source_files     = 'Classes/**/*'
+  s.dependency 'Flutter'
   s.platform = :ios, '12.0'
+
+  s.pod_target_xcconfig = {
+    'DEFINES_MODULE' => 'YES',
+    'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386' 
+  }
+  s.swift_version = '5.0'
+
   s.ios.vendored_frameworks = "Frameworks/GStreamer.framework"
 
   # Download the GStreamer, unpack it, and prepare the framework
